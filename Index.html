@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ilê Arte — artes com respeito e propósito</title>
+  <meta name="description" content="Ilê Arte: criação de artes e produtos para terreiros e barracões, com respeito, beleza e propósito." />
+
+  <style>
+    :root{
+      --bg0:#05070a;
+      --bg1:#060a10;
+
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.12);
+      --stroke2: rgba(255,255,255,.18);
+
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.56);
+
+      --gold:#d8b25c;
+      --amber:#ffb04a;
+      --green:#29d3a1;
+      --blue:#4aa3ff;
+      --purple:#b76bff;
+
+      --shadow: 0 18px 48px rgba(0,0,0,.60);
+      --r: 22px;
+      --r2: 16px;
+
+      --max: 1180px;
+      --pad: 22px;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--txt);
+      background:
+        radial-gradient(1200px 650px at 12% -10%, rgba(216,178,92,.22), transparent 62%),
+        radial-gradient(1050px 620px at 88% 8%, rgba(41,211,161,.16), transparent 60%),
+        radial-gradient(1150px 700px at 70% 115%, rgba(183,107,255,.15), transparent 62%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg0) 70%, #04060a 100%);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    button, input, select, textarea{ font-family:inherit; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    .section{
+      padding: 82px 0;
+    }
+    @media (max-width: 720px){
+      .section{ padding: 62px 0; }
+    }
+
+    /* Cards */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .pad{ padding: 28px; }
+    @media (max-width: 720px){ .pad{ padding: 20px; } }
+
+    /* Topbar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(12px);
+      background: rgba(6,10,16,.62);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .toprow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 240px;
+    }
+    .logoBox{
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+    .logoBox img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .brandText b{
+      display:block;
+      font-size: 15px;
+      letter-spacing: .3px;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .brandText span{
+      display:block;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.2;
+    }
+
+    nav{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .navlink{
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      font-size: 13.5px;
+      transition: .2s ease;
+      background: transparent;
+    }
+    .navlink:hover{
+      color: var(--txt);
+      border-color: var(--stroke);
+      background: rgba(255,255,255,.04);
+      transform: translateY(-1px);
+    }
+    .navlink.active{
+      color: var(--txt);
+      border-color: rgba(216,178,92,.35);
+      background: rgba(216,178,92,.10);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 84px 0 56px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    @media (max-width: 980px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(216,178,92,.15);
+    }
+    h1{
+      margin: 16px 0 12px;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+    }
+    @media (max-width: 520px){ h1{ font-size: 36px; } }
+
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 62ch;
+    }
+
+    .ctaRow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+      align-items:center;
+    }
+    .btn{
+      appearance:none;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      padding: 12px 16px;
+      cursor:pointer;
+      transition: .2s ease;
+      font-weight: 800;
+      font-size: 14px;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(216,178,92,.95), rgba(255,176,74,.95));
+      color: #1b1205;
+      box-shadow: 0 18px 34px rgba(0,0,0,.40);
+    }
+    .btnPrimary:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+    .btnGhost{
+      background: rgba(255,255,255,.05);
+      border-color: var(--stroke);
+      color: var(--txt);
+    }
+    .btnGhost:hover{ background: rgba(255,255,255,.07); transform: translateY(-1px); }
+
+    .chips{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Hero side visual */
+    .visual{
+      position: relative;
+      min-height: 360px;
+    }
+    .visualInner{
+      position: relative;
+      height: 100%;
+      border-radius: var(--r);
+      border: 1px solid var(--stroke);
+      background:
+        radial-gradient(420px 320px at 30% 25%, rgba(216,178,92,.20), transparent 62%),
+        radial-gradient(420px 320px at 78% 35%, rgba(41,211,161,.18), transparent 62%),
+        radial-gradient(420px 320px at 42% 88%, rgba(183,107,255,.16), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .badge{
+      position:absolute;
+      left: 20px; right: 20px; bottom: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      padding: 16px;
+      display:grid;
+      gap: 8px;
+    }
+    .badge b{ font-size: 14px; }
+    .badge span{ color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+
+    /* Section head */
+    .secHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .secHead h2{
+      margin:0;
+      font-size: 26px;
+      letter-spacing: -.3px;
+    }
+    .secHead p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    /* Two columns */
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .twoCol{ grid-template-columns: 1fr; }
+    }
+
+    .bullets{ display:grid; gap: 12px; margin-top: 14px; }
+    .bullet{
+      display:flex;
+      gap: 14px;
+      align-items:flex-start;
+      padding: 14px;
+      border-radius: var(--r2);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+    }
+    .ico{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      display:grid;
+      place-items:center;
+      font-size: 18px;
+      flex: 0 0 auto;
+    }
+    .bullet b{ display:block; font-size: 14px; margin-bottom: 3px; }
+    .bullet span{ color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+
+    .note{
+      color: var(--muted2);
+      font-size: 13px;
+      line-height: 1.75;
+      margin-top: 12px;
+    }
+
+    /* Portfolio grid */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 760px){
+      .gallery{ grid-template-columns: repeat(2, 1fr); }
+    }
+    .tile{
+      position:relative;
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      aspect-ratio: 4/3;
+    }
+    .tile img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    .tile .tag{
+      position:absolute;
+      top:10px;
+      left:10px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Contact */
+    form{ display:grid; gap: 12px; margin-top: 12px; }
+    .fields{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 760px){
+      .fields{ grid-template-columns: 1fr; }
+    }
+    .field{ display:grid; gap: 7px; }
+    label{ font-size: 13px; color: var(--muted); }
+
+    input, select, textarea{
+      width:100%;
+      padding: 13px 13px;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      color: var(--txt);
+      outline:none;
+      transition: .2s ease;
+      font-size: 14px;
+    }
+    textarea{ min-height: 140px; resize: vertical; line-height: 1.7; }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(216,178,92,.42);
+      box-shadow: 0 0 0 5px rgba(216,178,92,.12);
+    }
+
+    /* Logo panel in contact */
+    .logoPanel{
+      display:grid;
+      gap: 14px;
+      align-content:start;
+    }
+    .logoBig{
+      width: 84px;
+      height: 84px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,.45);
+    }
+    .logoBig img{ width:100%; height:100%; object-fit:cover; }
+
+    /* Submit feedback */
+    .formStatus{
+      display:none;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(41,211,161,.25);
+      background: rgba(41,211,161,.08);
+      color: rgba(255,255,255,.88);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    .formStatus.show{ display:block; }
+    .formStatus.error{
+      border-color: rgba(255,176,74,.30);
+      background: rgba(255,176,74,.10);
+    }
+
+    footer{
+      border-top: 1px solid var(--stroke);
+      background: rgba(0,0,0,.14);
+      padding: 26px 0;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    :target{ scroll-margin-top: 92px; }
+  </style>
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="wrap">
+      <div class="toprow">
+        <a class="brand" href="#inicio" aria-label="Ir para Início">
+          <div class="logoBox" title="Logo Ilê Arte">
+            <img src="logo.png" alt="Logo Ilê Arte"
+              onerror="this.style.display='none'; this.parentElement.textContent='IA'; this.parentElement.style.fontWeight='900'; this.parentElement.style.color='rgba(255,255,255,.85)';" />
+          </div>
+          <div class="brandText">
+            <b>Ilê Arte</b>
+            <span>Artes e produtos com respeito e propósito</span>
+          </div>
+        </a>
+
+        <nav aria-label="Menu principal">
+          <a class="navlink active" href="#inicio">Início</a>
+          <a class="navlink" href="#quem-somos">Quem somos</a>
+          <a class="navlink" href="#portfolio">Portfólio</a>
+          <a class="navlink" href="#fale-conosco">Fale Conosco</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / INÍCIO -->
+  <main id="inicio" class="hero">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div class="card">
+          <div class="pad">
+            <div class="kicker"><span class="dot"></span> Ilê Arte • criação, cuidado e tradição</div>
+
+            <h1>Arte que representa a fé com dignidade — sem complicação.</h1>
+
+            <p class="lead">
+              A Ilê Arte cria artes e peças para terreiros e barracões, com estética, respeito e responsabilidade.
+              Você não precisa saber termos técnicos: você diz o que quer — e a gente transforma isso em algo bonito,
+              coerente e pronto para usar, divulgar e vender.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn btnPrimary" href="#fale-conosco">✉️ Pedir orçamento</a>
+              <a class="btn btnGhost" href="#portfolio">🖼️ Ver portfólio</a>
+            </div>
+
+            <div class="chips">
+              <span class="chip">🎨 Artes sob medida</span>
+              <span class="chip">👕 Peças para eventos e visitantes</span>
+              <span class="chip">🛡️ Respeito acima de tudo</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="visual" aria-label="Painel objetivo">
+          <div class="visualInner">
+            <div class="badge" style="padding:22px 24px;">
+              <small style="
+                letter-spacing:.6px;
+                color:rgba(255,255,255,.55);
+                font-weight:700;
+                font-size:12px;
+              ">
+                NOSSO OBJETIVO
+              </small>
+
+              <h3 style="
+                margin:8px 0 12px;
+                font-size:24px;
+                line-height:1.25;
+                font-weight:900;
+                color:rgba(255,255,255,.96);
+              ">
+                Fortalecer a casa através da arte.
+              </h3>
+
+              <p style="
+                margin:0;
+                font-size:15.5px;
+                line-height:1.85;
+                color:rgba(255,255,255,.78);
+                max-width:42ch;
+              ">
+                Criamos materiais que comunicam com clareza, respeitam a tradição e ajudam o terreiro
+                a se organizar, divulgar e gerar renda com dignidade — unindo fé, identidade e estética.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- QUEM SOMOS -->
+  <section id="quem-somos" class="section">
+    <div class="wrap">
+      <div class="secHead">
+        <div>
+          <h2>Quem Somos</h2>
+          <p>Uma marca feita por amor à religião — com estética, responsabilidade e respeito.</p>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="card">
+          <div class="pad">
+            <div class="kicker"><span class="dot"></span> Nossa história</div>
+
+            <p class="lead" style="margin-top:14px;">
+              A Ilê Arte nasceu dentro de uma realidade simples: muita gente ama a religião e cuida da casa
+              com tudo o que tem — mas, quando chega a hora de criar artes bonitas (camisetas, eventos,
+              divulgação, materiais para visitantes), acaba ficando “no improviso”.
+            </p>
+
+            <p class="lead" style="margin-top:12px;">
+              Nosso trabalho é unir <b>beleza</b> com <b>respeito</b>. A gente cria artes que não são só “imagem”:
+              elas carregam mensagem, postura e identidade. Tudo com validação, cuidado com escrita e símbolos,
+              e sempre seguindo as orientações da casa.
+            </p>
+
+            <div class="bullets">
+              <div class="bullet">
+                <div class="ico">🧠</div>
+                <div>
+                  <b>Clareza (pra leigos também)</b>
+                  <span>Explicamos simples, sem enrolação — e entregamos do jeito certo pra estampar e divulgar.</span>
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="ico">🤝</div>
+                <div>
+                  <b>Respeito como regra</b>
+                  <span>Nada é “só estética”: a gente trata cada detalhe com responsabilidade e cuidado.</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="note">
+              Se alguma coisa não deve ser usada (símbolo, frase, cor, nome), a gente ajusta sem questionar.
+              Aqui, a tradição vem primeiro.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <div class="kicker"><span class="dot"></span> O que entregamos</div>
+
+            <div class="bullets" style="margin-top:14px;">
+              <div class="bullet">
+                <div class="ico">👕</div>
+                <div>
+                  <b>Artes prontas para produção</b>
+                  <span>Arquivos no tamanho certo, variações (frente/costas/detalhes) e acabamento profissional.</span>
+                </div>
+              </div>
+
+              <div class="bullet">
+                <div class="ico">🏷️</div>
+                <div>
+                  <b>Identidade visual da casa</b>
+                  <span>Um padrão bonito (cores e estilo) para tudo ter a mesma “assinatura”.</span>
+                </div>
+              </div>
+
+              <div class="bullet">
+                <div class="ico">📣</div>
+                <div>
+                  <b>Materiais para eventos e divulgação</b>
+                  <span>Convites, banners, posts e peças para recepção de visitantes.</span>
+                </div>
+              </div>
+
+              <div class="bullet">
+                <div class="ico">✅</div>
+                <div>
+                  <b>Validação com você</b>
+                  <span>Antes de finalizar, confirmamos escrita, intenção e elementos visuais.</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="note" style="margin-top:14px;">
+              “Por amor à religião, com responsabilidade.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFÓLIO (fixo) -->
+  <section id="portfolio" class="section">
+    <div class="wrap">
+      <div class="secHead">
+        <div>
+          <h2>Portfólio</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="pad">
+          <div class="kicker"><span class="dot"></span> Galeria</div>
+
+          <div class="gallery">
+            <div class="tile"><span class="tag">#1</span><img src="portifolio1.jpeg" alt="Portfólio Ilê Arte 1" onerror="this.onerror=null; this.src='portifolio1.png';"/></div>
+            <div class="tile"><span class="tag">#2</span><img src="portifolio2.jpeg" alt="Portfólio Ilê Arte 2" onerror="this.onerror=null; this.src='portifolio2.png';"/></div>
+            <div class="tile"><span class="tag">#3</span><img src="portifolio3.jpeg" alt="Portfólio Ilê Arte 3" onerror="this.onerror=null; this.src='portifolio3.png';"/></div>
+            <div class="tile"><span class="tag">#4</span><img src="portifolio4.jpeg" alt="Portfólio Ilê Arte 4" onerror="this.onerror=null; this.src='portifolio4.png';"/></div>
+            <div class="tile"><span class="tag">#5</span><img src="portifolio5.jpeg" alt="Portfólio Ilê Arte 5" onerror="this.onerror=null; this.src='portifolio5.png';"/></div>
+            <div class="tile"><span class="tag">#6</span><img src="portifolio6.jpeg" alt="Portfólio Ilê Arte 6" onerror="this.onerror=null; this.src='portifolio6.png';"/></div>
+            <div class="tile"><span class="tag">#7</span><img src="portifolio7.jpeg" alt="Portfólio Ilê Arte 7" onerror="this.onerror=null; this.src='portifolio7.png';"/></div>
+            <div class="tile"><span class="tag">#8</span><img src="portifolio8.jpeg" alt="Portfólio Ilê Arte 8" onerror="this.onerror=null; this.src='portifolio8.png';"/></div>
+            <div class="tile"><span class="tag">#9</span><img src="portifolio9.jpeg" alt="Portfólio Ilê Arte 9" onerror="this.onerror=null; this.src='portifolio9.png';"/></div>
+            <div class="tile"><span class="tag">#10</span><img src="portifolio10.jpeg" alt="Portfólio Ilê Arte 10" onerror="this.onerror=null; this.src='portifolio10.png';"/></div>
+          </div>
+
+          <p class="note"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FALE CONOSCO (ENVIO PARA E-MAIL via FormSubmit + botão copiar) -->
+  <section id="fale-conosco" class="section">
+    <div class="wrap">
+      <div class="secHead">
+        <div>
+          <h2>Fale Conosco</h2>
+          <p>Selecione o tipo de atendimento (submenu) e envie sua mensagem. Simples e direto.</p>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="card">
+          <div class="pad">
+            <div class="kicker"><span class="dot"></span> Formulário</div>
+
+            <!-- 🔥 TROQUE O E-MAIL ABAIXO PELO SEU -->
+            <form id="contactForm" action="https://formsubmit.co/andressa@ilearte.com.br" method="POST">
+              <!-- Anti-spam -->
+              <input type="text" name="_honey" style="display:none">
+
+              <!-- Configurações FormSubmit -->
+              <input type="hidden" name="_subject" value="Novo contato — Ilê Arte">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+
+              <!-- Mensagem formatada (vai junto no e-mail) -->
+              <input type="hidden" name="mensagem_formatada" id="mensagem_formatada" />
+
+              <!-- Status -->
+              <div id="formStatus" class="formStatus" aria-live="polite"></div>
+
+              <div class="fields">
+                <div class="field">
+                  <label for="nome">Seu nome</label>
+                  <input id="nome" name="nome" placeholder="Ex: Maria" required />
+                </div>
+
+                <div class="field">
+                  <label for="whats">WhatsApp (ou telefone)</label>
+                  <input id="whats" name="whats" placeholder="Ex: (11) 99999-9999" required />
+                </div>
+              </div>
+
+              <div class="fields">
+                <div class="field">
+                  <label for="email">E-mail (opcional)</label>
+                  <input id="email" name="email" type="email" placeholder="Ex: contato@exemplo.com" />
+                </div>
+
+                <div class="field">
+                  <label for="assunto">Assunto (submenu)</label>
+                  <select id="assunto" name="assunto" required>
+                    <option value="" disabled selected>Selecione…</option>
+                    <option value="Ajuda">Ajuda</option>
+                    <option value="Orçamento">Orçamento</option>
+                    <option value="Dúvidas">Dúvidas</option>
+                    <option value="Problemas">Problemas</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Se for orçamento, conte: quantidade, tipo de peça, prazo e ideia da arte." required></textarea>
+              </div>
+
+              <div class="ctaRow">
+                <button class="btn btnPrimary" type="submit" id="btnSend">📩 Enviar</button>
+                <button class="btn btnGhost" type="button" id="btnCopy">📋 Copiar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <div class="logoPanel">
+              <div class="logoBig" title="Ilê Arte">
+                <img src="logo.png" alt="Logo Ilê Arte"
+                  onerror="this.style.display='none'; this.parentElement.textContent='Ilê Arte'; this.parentElement.style.display='grid'; this.parentElement.style.placeItems='center'; this.parentElement.style.padding='12px'; this.parentElement.style.fontWeight='900';" />
+              </div>
+
+              <div>
+                <div class="kicker"><span class="dot"></span> Atendimento</div>
+                <p class="lead" style="margin-top:12px;">
+                  Você explica do seu jeito — a gente entende, traduz e entrega com cuidado.
+                  Orçamento transparente, validação com você e respeito em cada detalhe.
+                </p>
+
+                <div class="bullets">
+                  <div class="bullet">
+                    <div class="ico">💰</div>
+                    <div>
+                      <b>Orçamento claro</b>
+                      <span>Você entende o que é criação, ajustes e produção (se houver).</span>
+                    </div>
+                  </div>
+                  <div class="bullet">
+                    <div class="ico">⏱️</div>
+                    <div>
+                      <b>Prazos reais</b>
+                      <span>A gente confirma o que é viável sem prometer o impossível.</span>
+                    </div>
+                  </div>
+                  <div class="bullet">
+                    <div class="ico">🛡️</div>
+                    <div>
+                      <b>Respeito sempre</b>
+                      <span>Orientações da casa acima de tudo: símbolos, nomes e significados.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="note">
+                  Dica: se quiser, eu adiciono botões de WhatsApp e Instagram aqui (clicou, abriu).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <span>© <span id="year"></span> Ilê Arte • Todos os direitos reservados</span>
+        <span>Arte com propósito • Feito com respeito</span>
+         <!-- ✅ Instagram no rodapé -->
+        <a class="igLink" href="https://instagram.com/ilearteaxe" target="_blank" rel="noopener" aria-label="Instagram Ilê Arte (@ilearteaxe)">
+          <svg class="igIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M16.98 2H7.02C4.25 2 2 4.25 2 7.02v9.96C2 19.75 4.25 22 7.02 22h9.96C19.75 22 22 19.75 22 16.98V7.02C22 4.25 19.75 2 16.98 2Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M17.5 6.7h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span>@ilearteaxe</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // NAV ACTIVE
+    const navLinks = [...document.querySelectorAll(".navlink")];
+    const sections = navLinks
+      .map(a => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    function setActive(id){
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActive(visible.target.id);
+    }, { rootMargin: "-30% 0px -60% 0px", threshold: [0.08, 0.15, 0.25, 0.35] });
+
+    sections.forEach(s => obs.observe(s));
+
+    // UTIL: build formatted message
+    function buildMessage(){
+      const nome = document.getElementById("nome").value.trim();
+      const whats = document.getElementById("whats").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const assunto = document.getElementById("assunto").value;
+      const mensagem = document.getElementById("mensagem").value.trim();
+
+      const lines = [
+        "ILÊ ARTE — CONTATO",
+        "-------------------",
+        `Nome: ${nome || "-"}`,
+        `WhatsApp: ${whats || "-"}`,
+        `E-mail: ${email || "-"}`,
+        `Assunto: ${assunto || "-"}`,
+        "",
+        "Mensagem:",
+        mensagem || "-"
+      ];
+      return lines.join("\n");
+    }
+
+    async function copyToClipboard(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("Mensagem copiada! Agora é só colar no WhatsApp/Instagram/E-mail.");
+      }catch{
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        alert("Mensagem copiada! Agora é só colar no WhatsApp/Instagram/E-mail.");
+      }
+    }
+
+    // FORM SUBMIT
+    const form = document.getElementById("contactForm");
+    const btnCopy = document.getElementById("btnCopy");
+    const statusEl = document.getElementById("formStatus");
+    const hiddenMsg = document.getElementById("mensagem_formatada");
+
+    btnCopy.addEventListener("click", () => copyToClipboard(buildMessage()));
+
+    form.addEventListener("submit", () => {
+      if (hiddenMsg) hiddenMsg.value = buildMessage();
+      statusEl.className = "formStatus show";
+      statusEl.textContent = "Enviando... aguarde.";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
